@@ -1,4 +1,4 @@
-# Ember-simple-select
+# Ember-simple-select [![Travis-CI badge](https://travis-ci.org/novafloss/ember-simple-select.svg)](https://travis-ci.org/novafloss/ember-simple-select)
 
 this Repo is a shameless copy/paste from [this JSBin](http://jsbin.com/fotuqa).
 
