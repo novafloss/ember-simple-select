@@ -1,6 +1,10 @@
 # Ember-simple-select
 
-This README outlines the details of collaborating on this Ember addon.
+this Repo is a shameless copy/paste from [this JSBin](http://jsbin.com/fotuqa).
+
+It offers a `{{simple-select}}` component that comes as a replacement
+for the deprecated `Ember.Select`, while following all the Ember 2.0 guidelines.
+
 
 ## Installation
 
