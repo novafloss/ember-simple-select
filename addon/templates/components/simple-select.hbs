@@ -1,0 +1,13 @@
+<select disabled="{{if disabled 'disabled'}}" class="simple-select__select" {{action 'change' on='change'}}>
+  {{#if prompt}}
+    <option disabled selected={{is-not _selection}}>
+      {{prompt}}
+    </option>
+  {{/if}}
+  {{#each content key="@identity" as |item|}}
+    <option value="{{read-path item optionValuePath}}"
+            selected={{is-equal item _selection}}>
+      {{read-path item optionLabelPath}}
+    </option>
+  {{/each}}
+</select>
