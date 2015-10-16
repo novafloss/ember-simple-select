@@ -11,7 +11,6 @@ export default Ember.Component.extend({
   prompt: null,
   optionValuePath: 'id',
   optionLabelPath: 'title',
-  action: Ember.K, // action to fire on change
 
   // shadow the passed-in `selection` to avoid
   // leaking changes to it via a 2-way binding
@@ -21,6 +20,9 @@ export default Ember.Component.extend({
     this._super(...arguments);
     if (!this.get('content')) {
       this.set('content', []);
+    }
+    if (!this.get('selection') && this.get('value')) {
+      this.set('selection', Ember.A(this.get('content')).findBy(this.get('optionValuePath'), this.get('value')));
     }
   },
 
@@ -39,8 +41,7 @@ export default Ember.Component.extend({
       // changes to `selection` out via 2-way binding
       this.set('_selection', selection);
 
-      const changeCallback = this.get('action');
-      changeCallback.call(this, selection);
+      this.sendAction('action', selection);
     }
   }
 });

@@ -16,7 +16,17 @@ for the deprecated `Ember.Select`, while following all the Ember 2.0 guidelines.
     content=yourData
     optionValuePath="id"
     optionLabelPath="displayName"
-    selection=currentlySelectedValue
+    selection=currentlySelectedObject
+    prompt="Please select a value"
+    action=doSomethingWhenTheSelectionChanged}}
+```
+
+```handlebars
+{{simple-select
+    content=yourData
+    optionValuePath="id"
+    optionLabelPath="displayName"
+    value=currentlySelectedValue
     prompt="Please select a value"
     action=doSomethingWhenTheSelectionChanged}}
 ```
