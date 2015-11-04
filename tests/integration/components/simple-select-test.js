@@ -59,7 +59,8 @@ test('it triggers an action on change', function(assert) {
     { id: 3, title: 'Three'}
   ]);
 
-  this.on('didChange', ()=> assert.ok(true));
+  this.didChange= ()=> assert.ok(true);
+  this.on('didChange', this.didChange);
   this.render(hbs`{{simple-select content=content action='didChange'}}`);
   fillIn(this.$('select'), 2);
 });
@@ -73,10 +74,11 @@ test('it sends the selected object and the value as a parameter', function(asser
     { id: 3, title: 'Three'}
   ]);
 
-  this.on('didChange', (selection, value)=> {
+  this.didChange = (selection, value)=> {
     assert.equal(selection, Ember.A(this.get('content')).objectAt(2));
     assert.equal(value, 3);
-  });
+  };
+  this.on('didChange', this.didChange);
   this.render(hbs`{{simple-select content=content action='didChange'}}`);
   fillIn(this.$('select'), 3);
 });
@@ -112,9 +114,10 @@ test('it can allow an empty selection when the prompt is selectable', function(a
   ]);
 
   this.render(hbs`{{simple-select content=content value=3 prompt='Hep' allowEmpty=true action='didChange'}}`);
-  this.on('didChange', (sel, v)=> {
+  this.didChange = (sel, v)=> {
     assert.equal(sel, null);
     assert.equal(v, null);
-  });
+  };
+  this.on('didChange', this.didChange);
   fillIn(this.$('select'), undefined);
 });
