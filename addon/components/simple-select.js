@@ -6,6 +6,8 @@ import layout from '../templates/components/simple-select';
 
 export default Ember.Component.extend({
   layout,
+  tagName: 'select',
+  attributeBindings: ['disabled'],
   classNames: ['simple-select'],
   content: null,
   prompt: null,
@@ -26,22 +28,20 @@ export default Ember.Component.extend({
     }
   },
 
-  actions: {
-    change() {
-      const [ selectEl ] = this.$('select').toArray();
-      const { selectedIndex } = selectEl;
+  change() {
+    const [ selectEl ] = this.$('select').toArray();
+    const { selectedIndex } = selectEl;
 
-      // decrement index by 1 if we have a prompt
-      const hasPrompt = !!this.get('prompt');
-      const contentIndex = hasPrompt ? selectedIndex - 1 : selectedIndex;
+    // decrement index by 1 if we have a prompt
+    const hasPrompt = !!this.get('prompt');
+    const contentIndex = hasPrompt ? selectedIndex - 1 : selectedIndex;
 
-      const selection = this.get(`content.${contentIndex}`);
+    const selection = this.get(`content.${contentIndex}`);
 
-      // set the local, shadowed selection to avoid leaking
-      // changes to `selection` out via 2-way binding
-      this.set('_selection', selection);
+    // set the local, shadowed selection to avoid leaking
+    // changes to `selection` out via 2-way binding
+    this.set('_selection', selection);
 
-      this.sendAction('action', selection);
-    }
+    this.sendAction('action', selection);
   }
 });
