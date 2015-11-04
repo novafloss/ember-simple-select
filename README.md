@@ -12,6 +12,8 @@ for the deprecated `Ember.Select`, while following all the Ember 2.0 guidelines.
 ## Usage
 
 ```handlebars
+{{# With `selection`, you give an object
+    that corresponds to the selection}}
 {{simple-select
     content=yourData
     optionValuePath="id"
@@ -19,9 +21,8 @@ for the deprecated `Ember.Select`, while following all the Ember 2.0 guidelines.
     selection=currentlySelectedObject
     prompt="Please select a value"
     action=doSomethingWhenTheSelectionChanged}}
-```
 
-```handlebars
+{{# Here you give the value}}
 {{simple-select
     content=yourData
     optionValuePath="id"
@@ -30,6 +31,13 @@ for the deprecated `Ember.Select`, while following all the Ember 2.0 guidelines.
     prompt="Please select a value"
     action=doSomethingWhenTheSelectionChanged}}
 ```
+
+### Receiving actions
+
+The receiving actions will be called with 2 arguments:
+
+* The `selection`, which is the object that corresponds to the selected entry from `content`.
+* The `value` that is the actual value in the `<option>` tag (resolved by `optionValuePath`).
 
 # Contribute
 
