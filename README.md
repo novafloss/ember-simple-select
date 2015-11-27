@@ -32,6 +32,14 @@ for the deprecated `Ember.Select`, while following all the Ember 2.0 guidelines.
     action=doSomethingWhenTheSelectionChanged}}
 ```
 
+If you want to use the prompt as an empty value, you can do that by using the `allowEmpty` property:
+```handlebars
+{{simple-select
+    ...
+    prompt="Please select a value"
+    allowEmpty: true}}
+```
+
 ### Receiving actions
 
 The receiving actions will be called with 2 arguments:
