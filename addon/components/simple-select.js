@@ -16,21 +16,24 @@ export default Ember.Component.extend({
   allowEmpty: false,
   disablePrompt: Ember.computed.not('allowEmpty').readOnly(),
 
-  _selection: null,
+  _selection: Ember.computed('selection', 'value', 'content', 'optionValuePath', {
+    get() {
+      const selection = this.get('selection');
+      let _sel = null;
+      if (!selection && this.get('value')) {
+        _sel = Ember.A(this.get('content')).findBy(this.get('optionValuePath'), this.get('value'));
+      } else if (selection) {
+        _sel = selection;
+      }
+      return _sel;
+    }
+  }),
 
   init() {
     this._super(...arguments);
-    const sel = this.get('selection');
-    let _sel = null;
     if (!this.get('content')) {
       this.set('content', []);
     }
-    if (!sel && this.get('value')) {
-      _sel = Ember.A(this.get('content')).findBy(this.get('optionValuePath'), this.get('value'));
-    } else if (sel) {
-      _sel = sel;
-    }
-    this.set('_selection', _sel);
   },
 
   change() {
