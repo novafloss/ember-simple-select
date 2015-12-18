@@ -66,6 +66,22 @@ test('It changes the selected option when the "selection" attribute is updated',
   andThen(()=> assert.equal(this.$('select').val(), 1));
 });
 
+test('It changes the selected option when the "selection" is updated by user click', function(assert) {
+  assert.expect(2);
+
+  this.set('content', [
+    { id: 1, title: 'One'},
+    { id: 2, title: 'Two'},
+    { id: 3, title: 'Three'}
+  ]);
+
+  this.set('selection', this.get('content.2'));
+  this.render(hbs`{{simple-select content=content selection=selection}}`);
+  assert.equal(this.$('select').val(), 3);
+  this.$('select option:nth-child(2)').attr('selected', 'selected').trigger('change');
+  assert.equal(this.$('select').val(), 2);
+});
+
 test('it triggers an action on change', function(assert) {
   assert.expect(1);
 

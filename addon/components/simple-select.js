@@ -47,10 +47,6 @@ export default Ember.Component.extend({
     const contentIndex = hasPrompt ? selectedIndex - 1 : selectedIndex;
 
     const selection = this.get(`content.${contentIndex}`) || null;
-
-    // set the local, shadowed selection to avoid leaking
-    // changes to `selection` out via 2-way binding
-    this.set('_selection', selection);
     const value = selection ? Ember.get(selection, this.get('optionValuePath')) : null;
 
     this.sendAction('action', selection, value);
