@@ -23,6 +23,16 @@ test('it can be disabled', function(assert) {
   assert.ok(this.$('select').is(':disabled'), 'Explicitly disabled');
 });
 
+test('it can be an empty list', function(assert) {
+  assert.expect(2);
+
+  this.render(hbs`{{simple-select}}`);
+  assert.equal(this.$('select > option').length, 0, 'No content, no placeholder');
+
+  this.render(hbs`{{simple-select prompt="hey"}}`);
+  assert.equal(this.$('select > option').length, 1, 'No content, but a prompt is present');
+});
+
 test('it initializes with the selected object', function(assert) {
   assert.expect(1);
 
