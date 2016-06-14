@@ -9,6 +9,8 @@ for the deprecated `Ember.Select`, while following all the Ember 2.0 guidelines.
 
 `$ ember install ember-simple-select`
 
+`ember-get-helper` is required for ember 1.13.
+
 ## Usage
 
 ```handlebars
