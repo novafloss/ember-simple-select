@@ -1,11 +1,9 @@
 import { moduleForComponent, test } from 'ember-qunit';
-import startApp from '../../helpers/start-app';
 import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('simple-select', 'Integration | Component | simple select', {
-  integration: true,
-  setup: startApp
+  integration: true
 });
 
 test('it can be disabled', function(assert) {
@@ -73,7 +71,7 @@ test('It changes the selected option when the "selection" attribute is updated',
   this.render(hbs`{{simple-select content=content selection=selection}}`);
   assert.equal(this.$('select').val(), 3);
   this.set('selection', this.get('content.0'));
-  andThen(()=> assert.equal(this.$('select').val(), 1));
+  assert.equal(this.$('select').val(), 1);
 });
 
 test('It changes the selected option when the "selection" is updated by user click', function(assert) {
@@ -104,7 +102,7 @@ test('it triggers an action on change', function(assert) {
   this.didChange= ()=> assert.ok(true);
   this.on('didChange', this.didChange);
   this.render(hbs`{{simple-select content=content action='didChange'}}`);
-  fillIn(this.$('select'), 2);
+  this.$('select').val(2).trigger('change');
 });
 
 test('it sends the selected object and the value as a parameter', function(assert) {
@@ -122,7 +120,7 @@ test('it sends the selected object and the value as a parameter', function(asser
   };
   this.on('didChange', this.didChange);
   this.render(hbs`{{simple-select content=content action='didChange'}}`);
-  fillIn(this.$('select'), 3);
+  this.$('select').val(3).trigger('change');
 });
 
 test('it allows a prompt', function(assert) {
@@ -161,5 +159,5 @@ test('it can allow an empty selection when the prompt is selectable', function(a
     assert.equal(v, null);
   };
   this.on('didChange', this.didChange);
-  fillIn(this.$('select'), undefined);
+  this.$('select').val(undefined).trigger('change');
 });

@@ -64,6 +64,7 @@ The receiving actions will be called with 2 arguments:
 
 ## Running Tests
 
+* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
 * `ember test`
 * `ember test --server`
 
