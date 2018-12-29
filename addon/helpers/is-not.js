@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import { helper as buildHelper } from '@ember/component/helper';
 
 export function isNot([value]/*, hash*/) {
   return !value;
 }
 
-export default Ember.Helper.helper(isNot);
+export default buildHelper(isNot);

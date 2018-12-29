@@ -1,10 +1,10 @@
 //
 // Shamelessly copied from http://jsbin.com/fotuqa
 //
-import Ember from 'ember';
+import { helper as buildHelper } from '@ember/component/helper';
 
 export function isEqual([left, right]/*, hash*/) {
   return left === right;
 }
 
-export default Ember.Helper.helper(isEqual);
+export default buildHelper(isEqual);

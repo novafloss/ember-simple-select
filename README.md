@@ -9,37 +9,39 @@ for the deprecated `Ember.Select`, while following all the Ember 2.0 guidelines.
 
 `$ ember install ember-simple-select`
 
-`ember-get-helper` is required for ember 1.13.
-
 ## Usage
 
 ```handlebars
 {{# With `selection`, you give an object
     that corresponds to the selection}}
 {{simple-select
-    content=yourData
-    optionValuePath="id"
-    optionLabelPath="displayName"
-    selection=currentlySelectedObject
-    prompt="Please select a value"
-    action=doSomethingWhenTheSelectionChanged}}
+  content=yourData
+  optionValuePath="id"
+  optionLabelPath="displayName"
+  selection=currentlySelectedObject
+  prompt="Please select a value"
+  action=doSomethingWhenTheSelectionChanged
+}}
 
 {{# Here you give the value}}
 {{simple-select
-    content=yourData
-    optionValuePath="id"
-    optionLabelPath="displayName"
-    value=currentlySelectedValue
-    prompt="Please select a value"
-    action=doSomethingWhenTheSelectionChanged}}
+  content=yourData
+  optionValuePath="id"
+  optionLabelPath="displayName"
+  value=currentlySelectedValue
+  prompt="Please select a value"
+  action=doSomethingWhenTheSelectionChanged
+}}
 ```
 
 If you want to use the prompt as an empty value, you can do that by using the `allowEmpty` property:
+
 ```handlebars
 {{simple-select
-    ...
-    prompt="Please select a value"
-    allowEmpty: true}}
+  ...
+  prompt="Please select a value"
+  allowEmpty: true
+}}
 ```
 
 ### Receiving actions
